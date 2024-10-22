@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import dj_database_url
 import os
 from pathlib import Path
 
@@ -99,14 +99,27 @@ WSGI_APPLICATION = 'one.wsgi.application'
         
 #     }
 # }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',  # This creates a SQLite database file in your project directory
+#     }
+# }
+# DATABASES = {
+#     "default": dj_database_url.parse("postgresql://jeeva_data_user:DGY3mKIYA5eLK9WGzIhK5JvYknxojy3V@dpg-csbl1cdds78s73b9l99g-a.oregon-postgres.render.com/jeeva_data")
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',  # This creates a SQLite database file in your project directory
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'jeeva_data',  # Your database name
+        'USER': 'jeeva_data_user',  # Your database user
+        'PASSWORD': 'DGY3mKIYA5eLK9WGzIhK5JvYknxojy3V',  # Your database password
+        'HOST': 'dpg-csbl1cdds78s73b9l99g-a.oregon-postgres.render.com',  # Your database host
+        'PORT': '5432',  # Default PostgreSQL port
     }
 }
 
-
+# postgresql://jeeva_data_user:DGY3mKIYA5eLK9WGzIhK5JvYknxojy3V@dpg-csbl1cdds78s73b9l99g-a.oregon-postgres.render.com/jeeva_data
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
