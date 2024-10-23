@@ -21,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@5jng)a#7^9ud*b$1!vmmyjbei2-h758^w7vj72oli+eo+th@t'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG","False").lower()=="True"
 
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_HOST = 'smtp.sendgrid.net'
@@ -34,7 +34,7 @@ DEBUG = True
 # EMAIL_HOST_PASSWORD = 'E2F810258B3053B5FE5590BE185418DD4A81D75E5193A83410DA7F29678008691AC49D36DE57B02DEA523BB1822449F2'
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").SPLIT(" ")
 
 
 # Application definition
@@ -99,25 +99,26 @@ WSGI_APPLICATION = 'one.wsgi.application'
         
 #     }
 # }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',  # This creates a SQLite database file in your project directory
-#     }
-# }
-# DATABASES = {
-#     "default": dj_database_url.parse("postgresql://jeeva_data_user:DGY3mKIYA5eLK9WGzIhK5JvYknxojy3V@dpg-csbl1cdds78s73b9l99g-a.oregon-postgres.render.com/jeeva_data")
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'jeeva_data',  # Your database name
-        'USER': 'jeeva_data_user',  # Your database user
-        'PASSWORD': 'DGY3mKIYA5eLK9WGzIhK5JvYknxojy3V',  # Your database password
-        'HOST': 'dpg-csbl1cdds78s73b9l99g-a.oregon-postgres.render.com',  # Your database host
-        'PORT': '5432',  # Default PostgreSQL port
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',  # This creates a SQLite database file in your project directory
     }
 }
+database_url=os.environ.get("DARABASE_URL")
+DATABASES = {
+     "default": dj_database_url.parse(database_url)
+ }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'jeeva_data',  # Your database name
+#         'USER': 'jeeva_data_user',  # Your database user
+#         'PASSWORD': 'DGY3mKIYA5eLK9WGzIhK5JvYknxojy3V',  # Your database password
+#         'HOST': 'dpg-csbl1cdds78s73b9l99g-a.oregon-postgres.render.com',  # Your database host
+#         'PORT': '5432',  # Default PostgreSQL port
+#     }
+# }
 
 # postgresql://jeeva_data_user:DGY3mKIYA5eLK9WGzIhK5JvYknxojy3V@dpg-csbl1cdds78s73b9l99g-a.oregon-postgres.render.com/jeeva_data
 
