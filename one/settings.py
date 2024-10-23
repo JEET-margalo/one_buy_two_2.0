@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-import dj_database_url
+# import dj_database_url
 import os
 from pathlib import Path
 
@@ -35,7 +35,7 @@ DEBUG = os.environ.get("DEBUG","False").lower()=="True"
 
 
 # ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").SPLIT(" ")
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(" ")
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS","").split(" ")
 
 
 # Application definition
@@ -99,18 +99,19 @@ WSGI_APPLICATION = 'one.wsgi.application'
 
         
 #     }
+
 # }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',  # This creates a SQLite database file in your project directory
-#     }
-# }
-database_url=os.environ.get("DATABASE_URL")
 DATABASES = {
-     "default": dj_database_url.parse(database_url)
- }
-print("Database URL:", database_url)
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',  # This creates a SQLite database file in your project directory
+    }
+}
+# database_url=os.environ.get("DATABASE_URL")
+# DATABASES = {
+#      "default": dj_database_url.parse(database_url)
+#  }
+# print("Database URL:", database_url)
 
 # DATABASES = {
 #     'default': {
