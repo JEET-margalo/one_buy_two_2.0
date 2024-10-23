@@ -24,8 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG","False").lower()=="True"
-
+# DEBUG = os.environ.get("DEBUG","False").lower()=="True"
+DEBUG=True
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_HOST = 'smtp.sendgrid.net'
 # EMAIL_PORT = 587
@@ -36,8 +36,8 @@ DEBUG = os.environ.get("DEBUG","False").lower()=="True"
 
 # ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").SPLIT(" ")
 # ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS","").split(" ")
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost 127.0.0.1").split(" ")
-
+# ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost 127.0.0.1").split(" ")
+ALLOWED_HOSTS=True
 
 # Application definition
 
