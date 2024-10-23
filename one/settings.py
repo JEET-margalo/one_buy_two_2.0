@@ -34,7 +34,8 @@ DEBUG = os.environ.get("DEBUG","False").lower()=="True"
 # EMAIL_HOST_PASSWORD = 'E2F810258B3053B5FE5590BE185418DD4A81D75E5193A83410DA7F29678008691AC49D36DE57B02DEA523BB1822449F2'
 
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").SPLIT(" ")
+# ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").SPLIT(" ")
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(" ")
 
 
 # Application definition
@@ -99,19 +100,21 @@ WSGI_APPLICATION = 'one.wsgi.application'
         
 #     }
 # }
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',  # This creates a SQLite database file in your project directory
-    }
-}
-database_url=os.environ.get("DARABASE_URL")
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',  # This creates a SQLite database file in your project directory
+#     }
+# }
+database_url=os.environ.get("DATABASE_URL")
 DATABASES = {
      "default": dj_database_url.parse(database_url)
  }
+print("Database URL:", database_url)
+
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
+#         'ENGINE': 'django.db.backends.postgresql',git
 #         'NAME': 'jeeva_data',  # Your database name
 #         'USER': 'jeeva_data_user',  # Your database user
 #         'PASSWORD': 'DGY3mKIYA5eLK9WGzIhK5JvYknxojy3V',  # Your database password
