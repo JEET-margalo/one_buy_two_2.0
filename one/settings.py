@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY","184a04966218e58bb1f2f49f6785546e")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get("DEBUG","False").lower()=="True"
-DEBUG=True
+DEBUG=False
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_HOST = 'smtp.sendgrid.net'
 # EMAIL_PORT = 587
