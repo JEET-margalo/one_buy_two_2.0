@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY","184a04966218e58bb1f2f49f6785546e")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get("DEBUG","False").lower()=="True"
-DEBUG=False
+DEBUG=True
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_HOST = 'smtp.sendgrid.net'
 # EMAIL_PORT = 587
@@ -109,9 +109,9 @@ WSGI_APPLICATION = 'one.wsgi.application'
 # }
 database_url=os.environ.get("DATABASE_URL")
 print("DATABASE_URL:", database_url)
-DATABASES = {
-     "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
- }
+# DATABASES = {
+#      "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+#  }
 
 
 
